@@ -4,7 +4,7 @@ import { type } from "os";
 import React from "react";
 import Select from "react-select";
 
-export type CountrySelectiveValue = {
+export type CountrySelectValue = {
   flag: string;
   label: string;
   latlng: number[];
@@ -13,8 +13,8 @@ export type CountrySelectiveValue = {
 };
 
 interface CountrySelectProps {
-  value?: CountrySelectiveValue;
-  onChange: (value: CountrySelectiveValue) => void;
+  value?: CountrySelectValue;
+  onChange: (value: CountrySelectValue) => void;
 }
 const CountrySelect: React.FC<CountrySelectProps> = ({ value, onChange }) => {
   const { getAll } = useCountries();
@@ -25,7 +25,7 @@ const CountrySelect: React.FC<CountrySelectProps> = ({ value, onChange }) => {
         isClearable
         options={getAll()}
         value={value}
-        onChange={(value) => onChange(value as CountrySelectiveValue)}
+        onChange={(value) => onChange(value as CountrySelectValue)}
         formatOptionLabel={(option: any) => (
           <div className="flex flex-row items-center gap-3">
             <div>{option.flag}</div>
